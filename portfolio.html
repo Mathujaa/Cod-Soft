@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathujaa - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #2c7bfe;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: #2c7bfe;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0a 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .logo span {
+            color: #2c7bfe;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #2c7bfe;
+            text-decoration: none;
+        }
+                .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, #f9f9f9 50%, #e9f2fe 50%);
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #2c7bfe;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1e68de;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+        
+        .about {
+            background-color: #fff;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            width: 80%;
+            max-width: 350px;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .skills {
+            background-color: #f9f9f9;
+        }
+        
+        .skills-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: calc(33.333% - 20px);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .skill-item p {
+            color: #666;
+        }
+        
+        .projects {
+            background-color: #fff;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 25px;
+        }
+        
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-info p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .resume {
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .resume p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact {
+            background-color: #fff;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #2c7bfe;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #444;
+            border-radius: 50%;
+            margin: 0 10px;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #2c7bfe;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .skill-item {
+                width: calc(50% - 20px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .skill-item {
+                width: 100%;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <a href="#" class="logo">Mathujaa</a>
+                    <div class="tagline">Web Developer & Designer</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hello, I'm Mathujaa.</h1>
+                    <p>I'm a passionate web developer focused on creating clean, user-friendly experiences.</p>
+                    <a href="#projects" class="btn">View My Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="Maja (1).jpg" alt="Mathujaa">
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm a passionate web developer currently in my 2nd year of college, exploring and building beautiful, functional websites. I'm actively working on projects using HTML, CSS, and JavaScript to improve my front-end development skills.</p>
+                    <p>I enjoy solving real-world problems and bringing ideas to life through code. My journey as a student developer has given me a solid foundation and a creative approach to web development.</p>
+                    <p>When I'm not coding, you can find me learning new technologies or working on personal projects. I believe that consistency, curiosity, and creativity are key to growing as a developer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-content">
+                <div class="skill-item">
+                    <h3>Web Development</h3>
+                    <p>HTML5, CSS3, JavaScript, React, Node.js</p>
+                </div>
+                <div class="skill-item">
+                    <h3>UI/UX Design</h3>
+                    <p>Figma, Adobe XD, Responsive Design</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Backend Development</h3>
+                    <p>Python, PHP, MySQL, MongoDB</p>
+                </div>
+                <div class="skill-item">
+                    <h3>CMS</h3>
+                    <p>WordPress, Shopify, Webflow</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Tools & Others</h3>
+                    <p>Git, Docker, AWS, SEO</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Soft Skills</h3>
+                    <p>Project Management, Team Collaboration, Problem Solving</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="taco.png" alt="Little Taco Shop">
+                    </div>
+                    <div class="project-info">
+                        <h3>Little Taco Shop</h3>
+                        <p>A simple, responsive website for a fictional taco restaurant built using HTML5. This project demonstrates my ability to create semantic HTML structure and organize content effectively for small business websites.</p>
+                        <a href="../../../../../HTML/sampleproject.html" target="_blank" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="landingpage.png" alt="Landing Page">
+                    </div>
+                    <div class="project-info">
+                        <h3>Landing Page</h3>
+                        <p>A modern, responsive landing page created with HTML and CSS. This project showcases my skills in layout design, CSS styling techniques, and creating visually appealing web interfaces that drive user engagement.</p>
+                        <a href="../Landingpage/Landing.html" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="calc.png" alt="JavaScript Calculator">
+                    </div>
+                    <div class="project-info">
+                        <h3>JavaScript Calculator</h3>
+                        <p>An interactive calculator built using HTML, CSS, and JavaScript. This project demonstrates my ability to create functional web applications with user interaction, DOM manipulation, and basic computational logic.</p>
+                        <a href="http://127.0.0.1:5500/Projects/Calculator/calculator.html" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="resume">
+        <div class="container">
+            <h2>My Resume</h2>
+            <p>Interested in my experience and qualifications? Download my resume to learn more.</p>
+            <a href="Resume mathujaa.pdf" class="btn">Download Resume (PDF)</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i>📧</i> Email: mathujaa@gmail.com</p>
+                    <p><i>📱</i> Phone: 123456-7890</p>
+                    <p><i>📍</i> Location: Thoothukudi India</p>
+                    <p><i>🔗</i> LinkedIn: linkedin.com/in/mathujaa</p>
+                    <p><i>🔗</i> GitHub: github.com/mathujaa</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><span>FB</span></a>
+                <a href="#"><span>TW</span></a>
+                <a href="#"><span>IG</span></a>
+                <a href="#"><span>LI</span></a>
+                <a href="#"><span>GH</span></a>
+            </div>
+            <p>&copy; 2025 Mathujaa. All Rights Reserved.</p>
+        </div>
+    </footer>
+  
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
